@@ -37,7 +37,7 @@ int main()
   int maxval, i, iwide, ihigh, owide, ohigh;
   unsigned irow, icol, orow, ocol;
 
-#ifdef WIN32
+#if defined(WIN32) || defined(DJGPP)
   if (setmode(0,O_BINARY) < 0) perror("setmode(0)");
   if (setmode(1,O_BINARY) < 0) perror("setmode(1)");
 #endif
