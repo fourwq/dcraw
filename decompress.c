@@ -315,7 +315,7 @@ main(int argc, char **argv)
   if (open_and_id(argv[1]))
     exit(1);
 
-  init_tables();
+  init_tables(table);
 
   if (!strcmp(name,"Canon EOS D30"))
     fseek (ifp, 810076, SEEK_SET);
