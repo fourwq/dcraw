@@ -28,9 +28,11 @@
 
 #include <libgimp/gimp.h>
 #include <libgimp/gimpui.h>
-#include <libgimp/gimpintl.h>
 
-#define PLUG_IN_VERSION  "1.1.0 - 20 February 2004"
+#include <libintl.h>
+#define _(String) gettext(String)
+
+#define PLUG_IN_VERSION  "1.1.1 - 21 February 2004"
 
 static void query(void);
 static void run(const gchar *name,
