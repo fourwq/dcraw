@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 #ifdef _16BIT
 typedef unsigned short value;
@@ -36,6 +37,10 @@ int main()
   int maxval, i, iwide, ihigh, owide, ohigh;
   unsigned irow, icol, orow, ocol;
 
+#ifdef WIN32
+  if (setmode(0,O_BINARY) < 0) perror("setmode(0)");
+  if (setmode(1,O_BINARY) < 0) perror("setmode(1)");
+#endif
   ifp = stdin;
   ofp = stdout;
   if (fscanf (ifp, "P6 %d %d %d%c", &iwide, &ihigh, &maxval, &nl) != 4
