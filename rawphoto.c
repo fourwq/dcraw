@@ -34,7 +34,7 @@
 #define GimpRunModeType GimpRunMode
 #endif
 
-#define PLUG_IN_VERSION  "1.0.8 - 23 December 2003"
+#define PLUG_IN_VERSION  "1.0.9 - 5 March 2004"
 
 static void query(void);
 static void run(gchar *name,
@@ -97,7 +97,7 @@ static void query (void)
 			  load_return_vals);
 
   gimp_register_load_handler ("file_rawphoto_load",
-    "bay,bmq,crw,cs1,dcr,fff,jpg,mrw,nef,orf,pef,raf,raw,rdc,srf,tif,x3f", "");
+    "bay,bmq,cr2,crw,cs1,dcr,fff,jpg,kdc,mrw,nef,orf,pef,raf,raw,rdc,srf,tif,x3f", "");
 }
 
 static void run (gchar *name,
