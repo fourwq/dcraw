@@ -17,6 +17,8 @@
 typedef unsigned short value;
 #else
 typedef unsigned char value;
+#define ntohs(x) (x)
+#define htons(x) (x)
 #endif
 
 void merror (void *ptr, char *what)
@@ -63,7 +65,7 @@ int main()
       ocol = (icol - irow + owide - 1)/2;
       if (orow < ohigh && ocol < owide)
 	for (i = 0; i < 3; i++)
-	  mid[orow*owide+ocol][i] = in[icol][i];
+	  mid[orow*owide+ocol][i] = ntohs(in[icol][i]);
     }
     fread (in, iwide, sizeof *in, ifp);
   }
@@ -77,12 +79,12 @@ int main()
       if ((orow+ocol) & 1) {
         if (orow-1 < ohigh-2 && ocol-1 < owide*2-2)
 	  for (i = 0; i < 3; i++)
-	    out[ocol][i] = (
-	      pix[-owide][i] + pix[0-(orow&1)][i] +
-	      pix[ owide][i] + pix[1-(orow&1)][i] ) >> 2;
+	    out[ocol][i] = htons (
+	    ( pix[-owide][i] + pix[0-(orow&1)][i] +
+	      pix[ owide][i] + pix[1-(orow&1)][i] ) >> 2);
       } else
 	for (i = 0; i < 3; i++)
-	  out[ocol][i] = pix[0][i];
+	  out[ocol][i] = htons(pix[0][i]);
     }
     fwrite (out, 2*owide, 3*sizeof (value), ofp);
   }
