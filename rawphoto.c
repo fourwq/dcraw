@@ -33,9 +33,10 @@
 #define GimpRunModeType GimpRunMode
 #endif
 
-#define RAWPHOTO_CONST
 #if GIMP_CHECK_VERSION(1,3,17)
 #define RAWPHOTO_CONST const
+#else
+#define RAWPHOTO_CONST
 #endif
 
 #include <locale.h>
@@ -278,7 +279,7 @@ gint load_dialog (gchar * name)
 
   gimp_ui_init ("rawphoto", TRUE);
 
-  dialog = gimp_dialog_new (_("Raw Photo Loader 1.1"), "rawphoto",
+  dialog = gimp_dialog_new (_("Raw Photo Loader " PLUG_IN_VERSION), "rawphoto",
 #if !GIMP_CHECK_VERSION(1,3,23)
 			gimp_standard_help_func, "rawphoto",
 			GTK_WIN_POS_MOUSE,
