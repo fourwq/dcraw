@@ -32,7 +32,7 @@
 #include <libintl.h>
 #define _(String) gettext(String)
 
-#define PLUG_IN_VERSION  "1.1.3 - 29 March 2004"
+#define PLUG_IN_VERSION  "1.1.4 - 7 April 2004"
 
 static void query(void);
 static void run(const gchar *name,
@@ -172,6 +172,7 @@ static gint32 load_image (gchar *filename)
   guchar	*pixel;
   char		*command, nl;
 
+  setlocale (LC_NUMERIC, "C");
   command = g_malloc (strlen(filename)+100);
   if (!command) return -1;
   sprintf (command,
