@@ -526,6 +526,8 @@ int identify(char *fname)
     fseek (ifp, 4, SEEK_SET);
     thumb_length = fget4(ifp);
     fseek (ifp, 584, SEEK_SET);
+    if (!strcmp(model,"DiMAGE A1"))
+      fseek (ifp, 974, SEEK_SET);
     thumb_offset = fget4(ifp) + 49;
     thumb_length -= thumb_offset;
   } else if (magic == 0x46554a49) {	/* "FUJI" */
