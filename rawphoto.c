@@ -1,7 +1,7 @@
 /*
    Raw photo loader plugin for The GIMP
-   by Dave Coffin <dcoffin@shore.net>
-   http://www.shore.net/~dcoffin/
+   by Dave Coffin at cybercom dot net, user dcoffin
+   http://www.cybercom.net/~dcoffin/
 
    $Revision$
    $Date$
@@ -81,7 +81,7 @@ static void query (void)
   gimp_install_procedure ("file_rawphoto_load",
 			  "Loads raw digital camera files",
 			  "This plug-in loads raw digital camera files.",
-			  "Dave Coffin <dcoffin@shore.net>",
+			  "Dave Coffin at cybercom dot net, user dcoffin",
 			  "Copyright 2003 by Dave Coffin",
 			  PLUG_IN_VERSION,
 			  "<Load>/rawphoto",
