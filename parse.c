@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <string.h>
 
+typedef unsigned char uchar;
+
 /* Global Variables */
 
 FILE *ifp;
