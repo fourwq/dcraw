@@ -47,8 +47,7 @@ int fget4 (FILE *f)
 }
 
 /*
-   Parse the CIFF structure looking for two pieces of information:
-   The camera name, and the decode table number.
+   Parse the CIFF structure
  */
 parse (int offset, int length)
 {
