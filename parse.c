@@ -135,7 +135,8 @@ void nef_parse_makernote (base)
     val = get2();		/* should be 42 decimal */
     offset = get4();
     fseek (ifp, offset-8, SEEK_CUR);
-  } else if (!strncmp (buf,"FUJIFILM",8)) {
+  } else if (!strncmp (buf,"FUJIFILM",8) ||
+	     !strcmp  (buf,"Panasonic")) {
     order = 0x4949;
     fseek (ifp,  2, SEEK_CUR);
   } else if (!strcmp (buf,"OLYMP") ||
