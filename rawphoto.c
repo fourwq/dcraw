@@ -32,7 +32,7 @@
 #include <libintl.h>
 #define _(String) gettext(String)
 
-#define PLUG_IN_VERSION  "1.1.5 - 19 April 2004"
+#define PLUG_IN_VERSION  "1.1.6 - 10 January 2005"
 
 static void query(void);
 static void run(const gchar *name,
@@ -95,7 +95,7 @@ static void query (void)
 			  load_return_vals);
 
   gimp_register_load_handler ("file_rawphoto_load",
-    "bay,bmq,cr2,crw,cs1,dc2,dcr,fff,jpg,k25,kdc,mos,mrw,nef,orf,pef,raf,raw,rdc,srf,tif,x3f", "");
+    "bay,bmq,cr2,crw,cs1,dc2,dcr,erf,fff,jpg,k25,kdc,mos,mrw,nef,orf,pef,raf,raw,rdc,srf,tif,x3f", "");
 }
 
 static void run (const gchar *name,
