@@ -277,6 +277,11 @@ void parse_tiff_file (int base)
   }
   if (strncmp(make,"KODAK",5))
     thumb_layers = 0;
+  if (!strncmp(make,"Kodak",5)) {
+    fseek (ifp, 12+base, SEEK_SET);
+    puts ("\nSpecial Kodak image directory:");
+    parse_tiff (base, 0);
+  }
   if (!strncmp(model,"DCS460A",7)) {
     spp = 1;
     thumb_layers = 0;
