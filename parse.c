@@ -460,6 +460,7 @@ void kodak_yuv_decode (FILE *tfp)
 
   fseek (ifp, thumb_offset, SEEK_SET);
   width = (width+1) & -2;
+  height = (height+1) & -2;
   fprintf (tfp, "P6 %d %d 65535\n", width, height);
   out = malloc (width * 12);
   if (!out) {
@@ -587,7 +588,7 @@ int identify(char *fname)
     perror(thumb_name);
     exit(1);
   }
-  if (!strcasecmp(model,"DCS Pro 14N")) {
+  if (!strncmp(model,"DCS Pro",7)) {
     kodak_yuv_decode (tfp);
     goto done;
   }
