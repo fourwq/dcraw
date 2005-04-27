@@ -401,7 +401,7 @@ void parse_tiff (int base)
     spp = 1;
     thumb_layers = 0;
   }
-  if (!thumb_length) {
+  if (!thumb_length && offset) {
     thumb_offset = offset;
     sprintf (thumb_head, "P%d\n%d %d\n%d\n",
 	spp > 1 ? 6:5, width, height, (1 << bps) - 1);
