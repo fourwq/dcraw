@@ -443,6 +443,7 @@ void parse_ciff (int offset, int length, int level)
   tboff = get4() + offset;
   fseek (ifp, tboff, SEEK_SET);
   nrecs = get2();
+  if (nrecs > 100) return;
   printf ("%*s%d records:\n", level*2, "", nrecs);
   for (i = 0; i < nrecs; i++) {
     save = ftell(ifp);
