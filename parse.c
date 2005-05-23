@@ -979,6 +979,7 @@ void parse_jpeg (int offset)
     parse_tiff (save+6);
     fseek (ifp, save+len, SEEK_SET);
   }
+  thumb_length = 0;
 }
 
 char *memmem (char *haystack, size_t haystacklen,
@@ -1018,12 +1019,8 @@ int identify()
       fseek (ifp, hlen, SEEK_SET);
     } else
       parse_tiff (0);
-  } else if (!memcmp (head,"\0MRM",4))
+  } else if (!memcmp (head,"\0MRM",4)) {
     parse_minolta();
-    else if (!memcmp (head,"\xff\xd8\xff\xe1",4) &&
-	     !memcmp (head+6,"Exif",4)) {
-    parse_tiff (12);
-    thumb_length = 0;
   } else if (!memcmp (head,"FUJIFILM",8)) {
     fseek (ifp, 84, SEEK_SET);
     toff = get4();
