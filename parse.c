@@ -276,6 +276,8 @@ void nef_parse_exif(int base)
   }
 }
 
+void parse_mos(int level);
+
 int parse_tiff_ifd (int base, int level)
 {
   int entries, tag, type, count, slen, save, save2, val, i;
@@ -361,6 +363,9 @@ int parse_tiff_ifd (int base, int level)
       case 0x202:
 	if (strncmp(make,"OLYMPUS",7) || !thumb_length)
 	  thumb_length = val;
+	break;
+      case 34310:
+	parse_mos(0);
 	break;
       case 34665:
 	fseek (ifp, get4()+base, SEEK_SET);
