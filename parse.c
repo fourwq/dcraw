@@ -1049,7 +1049,7 @@ void parse_fuji (int offset)
   fseek (ifp, offset, SEEK_SET);
   fseek (ifp, get4(), SEEK_SET);
   entries = get4();
-  if (entries > 60) return;
+  if (entries > 255) return;
   while (entries--) {
     tag = get2();
     len = get2();
