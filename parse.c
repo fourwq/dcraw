@@ -1047,7 +1047,9 @@ void parse_fuji (int offset)
   int entries, tag, len;
 
   fseek (ifp, offset, SEEK_SET);
-  fseek (ifp, get4(), SEEK_SET);
+  if (!(len = get4())) return;
+  printf ("Fuji table at %d:\n",len);
+  fseek (ifp, len, SEEK_SET);
   entries = get4();
   if (entries > 255) return;
   while (entries--) {
