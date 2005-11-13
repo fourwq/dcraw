@@ -221,6 +221,7 @@ void nef_parse_makernote (base)
     fseek (ifp,  2, SEEK_CUR);
   } else if (!strcmp (buf,"OLYMP") ||
 	     !strcmp (buf,"LEICA") ||
+	     !strcmp (buf,"Ricoh") ||
 	     !strcmp (buf,"EPSON"))
     fseek (ifp, -2, SEEK_CUR);
   else if (!strcmp (buf,"AOC"))
