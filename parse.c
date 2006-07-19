@@ -938,6 +938,8 @@ void identify()
       fseek (ifp, hlen, SEEK_SET);
     } else
       parse_tiff (0);
+  } else if (!memcmp (head,"NDF0",4)) {
+    parse_tiff (12);
   } else if (!memcmp (head,"\0MRM",4)) {
     parse_minolta();
   } else if (!memcmp (head,"FUJIFILM",8)) {
