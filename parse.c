@@ -368,6 +368,11 @@ int parse_tiff_ifd (int base, int level)
 	fseek (ifp, get4()+base, SEEK_SET);
 	parse_exif (base, level+1);
 	break;
+      case 34853:
+	puts("GPS data:");
+	fseek (ifp, get4()+base, SEEK_SET);
+	parse_tiff_ifd (base, level+1);
+	break;
       case 50459:
 	i = order;
 	save2 = ftell(ifp);
