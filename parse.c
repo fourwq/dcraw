@@ -247,8 +247,10 @@ void parse_makernote (int base, int level)
     type = get2();
     count= get4();
     tiff_dump (base, tag, type, count, level);
-    if ((tag == 0x11 && !strncmp(make,"NIKON",5)) || type == 13) {
-      fseek (ifp, get4()+base, SEEK_SET);
+    if ((tag      == 0x11 && !strncmp(make,"NIKON",5)) ||
+	(tag >> 8 == 0x20 && !strncmp(buf ,"OLYMP",5)) || type == 13) {
+      if (count == 1)
+	fseek (ifp, get4()+base, SEEK_SET);
       parse_tiff_ifd (base, level+1);
     }
     if (tag == 0x1d)
@@ -262,8 +264,6 @@ void parse_makernote (int base, int level)
       fread (buf98, sizeof buf98, 1, ifp);
     if (tag == 0xa7)
       key = fgetc(ifp)^fgetc(ifp)^fgetc(ifp)^fgetc(ifp);
-    if (!strcmp (buf,"OLYMP") && tag >> 8 == 0x20)
-      parse_tiff_ifd (base, level+1);
     if (tag == 0xe01)
       parse_nikon_capture_note (count);
     if (tag == 0xb028) {
