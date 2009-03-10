@@ -239,7 +239,7 @@ void parse_makernote (int base, int level)
     fseek (ifp, -10, SEEK_CUR);
 
   entries = get2();
-  if (entries > 100) return;
+  if (entries > 127) return;
   puts("  MakerNote:");
   while (entries--) {
     save = ftell(ifp);
@@ -564,7 +564,7 @@ void parse_riff (int level)
     end = ftell(ifp) + size;
     fread (type, 4, 1, ifp);
     printf (" type %.4s:\n", type);
-    while (ftell(ifp) < end)
+    while (ftell(ifp)+7 < end)
       parse_riff (level+1);
   } else {
     save = ftell(ifp);
