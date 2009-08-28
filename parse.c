@@ -357,6 +357,7 @@ int parse_tiff_ifd (int base, int level)
       case 29185: sony_length = get4();  break;
       case 29217: sony_key    = get4();  break;
       case 33424:
+      case 65024:
 	puts("Kodak private data:");
 	fseek (ifp, get4()+base, SEEK_SET);
 	parse_tiff_ifd (base, level+1);
