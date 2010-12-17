@@ -235,8 +235,11 @@ void parse_makernote (int base, int level)
     fseek (ifp, -2, SEEK_CUR);
   else if (!strcmp (buf,"AOC"))
     fseek (ifp, -4, SEEK_CUR);
-  else
+  else {
     fseek (ifp, -10, SEEK_CUR);
+    if (!strncmp(make,"SAMSUNG",7))
+      base = ftell(ifp);
+  }
 
   entries = get2();
   if (entries > 127) return;
