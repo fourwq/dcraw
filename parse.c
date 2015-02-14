@@ -234,7 +234,7 @@ void nikon_decrypt (uchar ci, uchar cj, int tag, int i, int size, uchar *buf)
 
 int parse_tiff_ifd (int base, int level);
 
-void parse_makernote (int base, int level)
+void parse_makernote (int base, int len, int level)
 {
   int offset=0, entries, tag, type, count, val, save;
   unsigned serial=0, key=0;
@@ -279,6 +279,10 @@ nf: order = 0x4949;
     fseek (ifp, -10, SEEK_CUR);
     if (!strncmp(make,"SAMSUNG",7))
       base = ftell(ifp);
+    if (!strncmp (buf,"ev=",3)) {
+      while (len--) putchar (fgetc(ifp));
+      putchar ('\n');
+    }
   }
 
   entries = get2();
@@ -337,7 +341,7 @@ void parse_exif (int base, int level)
     count= get4();
     tiff_dump (base, tag, type, count, level);
     if (tag == 0x927c)
-      parse_makernote (base, level+1);
+      parse_makernote (base, count, level+1);
     fseek (ifp, save+12, SEEK_SET);
   }
 }
